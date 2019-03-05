@@ -17,6 +17,9 @@ if __name__ == '__main__':
     if len(sys.argv) < 2:
         help()
         # sys.exit(errno.EPERM)
+    elif not sys.argv[1].isnumeric():
+        help()
+        print('O raio deve ser um valor numérico')
     else:
         raio = sys.argv[1]
         area = circulo(raio)

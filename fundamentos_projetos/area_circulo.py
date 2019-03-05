@@ -9,9 +9,8 @@ def circulo(raio):
 
 if __name__ == '__main__':
     if len(sys.argv) < 2:
-        print("""\
-            É necessário informar o raio do círculo.
-            Sintaxe: area_circulo <raio>""")
+        print("É necessário informador o raio do círculo.")
+        print("Sintaxe: area_circulo <raio>")
     else:
         raio = sys.argv[1]
         area = circulo(raio)

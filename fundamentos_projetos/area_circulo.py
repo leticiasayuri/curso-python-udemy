@@ -1,5 +1,6 @@
 # -*- coding/. utf-8 -*-
 from math import pi
+import sys
 
 
 def circulo(raio):
@@ -7,6 +8,6 @@ def circulo(raio):
 
 
 if __name__ == '__main__':
-    raio = input('Informe o raio: ')
+    raio = sys.argv[1]
     area = circulo(raio)
     print('Área do circulo: ', area)

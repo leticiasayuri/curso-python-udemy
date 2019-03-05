@@ -1,7 +1,7 @@
 # -*- coding/. utf-8 -*-
 from math import pi
 import sys
-import errno
+# import errno
 
 
 def circulo(raio):

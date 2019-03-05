@@ -1,5 +1,5 @@
 # -*- coding/. utf-8 -*-
 from math import pi
 
-raio = 15.3
-print('Área do círculo ', pi * raio ** 2)
+raio = input('Informe o raio: ')
+print('Área do círculo ', pi * float(raio) ** 2)

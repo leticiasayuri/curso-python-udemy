@@ -1,11 +1,10 @@
 def fibonacci(limite):
-    penultimo = 0
-    ultimo = 1
-    print(f'{penultimo}, {ultimo}', end=', ')
-    while ultimo < limite:
-        penultimo, ultimo = ultimo, penultimo + ultimo
-        print(ultimo, end=', ')
+    resultado = [0, 1]
+    while resultado[-1] < limite:
+        resultado.append(resultado[-2] + resultado[-1])
+    return resultado
 
 
 if __name__ == '__main__':
-    fibonacci(20000)
+    for fib in fibonacci(10000):
+        print(fib)

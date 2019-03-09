@@ -3,6 +3,8 @@ try:
 
     for registro in arquivo:
         print('Nome: {}, Idade: {}'.format(*registro.strip().split(',')))
+except IndexError:
+    pass
 finally:
     print('finally')
     arquivo.close()

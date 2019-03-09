@@ -3,10 +3,8 @@ def fibonacci(limite):
     ultimo = 1
     print(f'{penultimo}, {ultimo}', end=', ')
     while ultimo < limite:
-        proximo = penultimo + ultimo
-        print(proximo, end=', ')
-        penultimo = ultimo
-        ultimo = proximo
+        penultimo, ultimo = ultimo, penultimo + ultimo
+        print(ultimo, end=', ')
 
 
 if __name__ == '__main__':

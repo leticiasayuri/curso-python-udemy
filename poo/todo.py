@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 
 
 class Projeto:
@@ -9,8 +9,8 @@ class Projeto:
     def __iter__(self):
         return self.tarefas.__iter__()
 
-    def adiciona(self, descricao):
-        self.tarefas.append(Tarefa(descricao))
+    def adiciona(self, descricao, vencimento=None):
+        self.tarefas.append(Tarefa(descricao, vencimento))
 
     def pendentes(self):
         return [tarefa for tarefa in self.tarefas if not tarefa.feito]
@@ -23,21 +23,33 @@ class Projeto:
 
 
 class Tarefa:
-    def __init__(self, descricao):
+    def __init__(self, descricao, vencimento=None):
         self.descricao = descricao
         self.feito = False
         self.criacao = datetime.now()
+        self.vencimento = vencimento
 
     def conclui(self):
         self.feito = True
 
     def __str__(self):
-        return self.descricao + (' (Concluída)' if self.feito else '')
+        status = []
+
+        if self.feito:
+            status.append('(Concluída)')
+        elif self.vencimento:
+            if datetime.now() > self.vencimento:
+                status.append('(Vencida)')
+            else:
+                dias = (self.vencimento - datetime.now()).days
+                status.append(f'(Vence em {dias} dias)')
+
+        return f'{self.descricao} ' + ' '.join(status)
 
 
 def main():
     tarefas_casa = Projeto('Tarefas de Casa')
-    tarefas_casa.adiciona('Passar roupa')
+    tarefas_casa.adiciona('Passar roupa', datetime.now())
     tarefas_casa.adiciona('Lavar prato')
     print(tarefas_casa)
 
@@ -50,7 +62,8 @@ def main():
     tarefas_mercado = Projeto('Compras no mercado')
     tarefas_mercado.adiciona('Frutas secas')
     tarefas_mercado.adiciona('Carne')
-    tarefas_mercado.adiciona('Tomate')
+    tarefas_mercado.adiciona('Tomate', datetime.now() +
+                             timedelta(days=3, minutes=12))
     print(tarefas_mercado)
 
     comprar_carne = tarefas_mercado.procura('Carne')

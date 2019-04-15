@@ -71,10 +71,9 @@ def main():
     tarefas_casa = Projeto('Tarefas de Casa')
     tarefas_casa.adiciona('Passar roupa', datetime.now())
     tarefas_casa.adiciona('Lavar prato')
-    tarefas_casa.tarefas.append(TarefaRecorrente(
+    tarefas_casa.adiciona(TarefaRecorrente(
         'Trocar lençóis', datetime.now(), 7))
-    tarefas_casa.tarefas.append(
-        tarefas_casa.procura('Trocar lençóis').conclui())
+    tarefas_casa.adiciona(tarefas_casa.procura('Trocar lençóis').conclui())
     print(tarefas_casa)
 
     tarefas_casa.procura('Lavar prato').conclui()
